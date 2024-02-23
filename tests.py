@@ -56,7 +56,6 @@ class TestBooksCollector:
     def test_add_book_in_favorites_success(self):
         collector = BooksCollector()
         collector.add_new_book('Гордость и предубеждение и зомби')
-        collector.set_book_genre('Гордость и предубеждение и зомби', 'Фантастика')
         collector.add_book_in_favorites('Гордость и предубеждение и зомби')
         assert 'Гордость и предубеждение и зомби' in collector.get_list_of_favorites_books()
 
