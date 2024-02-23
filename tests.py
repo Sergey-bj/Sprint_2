@@ -11,11 +11,17 @@ class TestBooksCollector:
         collector.add_new_book('Что делать, если ваш кот хочет вас убить')
         assert len(collector.get_books_genre()) == 2
 
-    @pytest.mark.parametrize('invalid_name', ['qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq', ' '])
+    @pytest.mark.parametrize(
+        'invalid_name',
+        [
+        'qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq',
+        ' '
+        ]
+    )
     def test_add_new_book_add_two_books_negative_input(self, invalid_name):
         collector = BooksCollector()
-        collector.add_new_book(invalid_name)
-        assert not collector.add_new_book(invalid_name)
+        result = collector.add_new_book(invalid_name)
+        assert not result
 
     def test_set_book_genre_success(self):
         collector = BooksCollector()
