@@ -45,19 +45,13 @@ class TestBooksCollector:
         collector.add_new_book('Идиот')
         assert collector.get_books_genre() == {'Гордость и предубеждение и зомби': '', 'Идиот': ''}
 
-    def test_get_books_for_children_success(self):
-        collector = BooksCollector()
-        collector.add_new_book('Гордость и предубеждение и зомби')
-        collector.set_book_genre('Гордость и предубеждение и зомби', 'Фантастика')
-        children_books = collector.get_books_for_children()
-        assert 'Гордость и предубеждение и зомби', 'Фантастика' in collector.genre
-
     def test_get_books_for_children_genre_with_age_rating(self):
         collector = BooksCollector()
         collector.add_new_book('Гордость и предубеждение и зомби')
         collector.set_book_genre('Гордость и предубеждение и зомби', 'Фантастика')
-        books_for_children = collector.get_books_genre()
-        assert books_for_children not in collector.genre_age_rating
+        books_for_children = collector.get_books_for_children()
+        assert 'Фантастика' not in collector.genre_age_rating
+        assert 'Гордость и предубеждение и зомби' in books_for_children
 
     def test_add_book_in_favorites_success(self):
         collector = BooksCollector()
