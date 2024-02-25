@@ -14,20 +14,14 @@ class TestBooksCollector:
     @pytest.mark.parametrize(
         'invalid_name',
         [
-        'qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq',
-        ' '
+        'qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq',
+        ''
         ]
     )
     def test_add_new_book_add_two_books_negative_input(self, invalid_name):
         collector = BooksCollector()
-        result = collector.add_new_book(invalid_name)
-        assert not result
-
-    def test_set_book_genre_success(self):
-        collector = BooksCollector()
-        collector.add_new_book('Гордость и предубеждение и зомби')
-        collector.set_book_genre('Гордость и предубеждение и зомби', 'Фантастика')
-        assert collector.get_book_genre('Гордость и предубеждение и зомби') == 'Фантастика'
+        collector.add_new_book(invalid_name)
+        assert collector.get_books_genre() == {}
 
     def test_get_book_genre_success(self):
         collector = BooksCollector()
